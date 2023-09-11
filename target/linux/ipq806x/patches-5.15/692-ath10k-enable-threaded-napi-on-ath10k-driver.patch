@@ -1,0 +1,38 @@
+diff --git a/drivers/net/wireless/ath/ath10k/pci.c b/drivers/net/wireless/ath/ath10k/pci.c
+index 4d4e2f91e15c..584307574d99 100644
+--- a/drivers/net/wireless/ath/ath10k/pci.c
++++ b/drivers/net/wireless/ath/ath10k/pci.c
+@@ -1958,6 +1958,7 @@ static int ath10k_pci_hif_start(struct ath10k *ar)
+ 
+ 	ath10k_dbg(ar, ATH10K_DBG_BOOT, "boot hif start\n");
+ 
++	dev_set_threaded(&ar->napi_dev, true);
+ 	ath10k_core_napi_enable(ar);
+ 
+ 	ath10k_pci_irq_enable(ar);
+diff --git a/drivers/net/wireless/ath/ath10k/sdio.c b/drivers/net/wireless/ath/ath10k/sdio.c
+index 63e1c2d783c5..52ef74d9811a 100644
+--- a/drivers/net/wireless/ath/ath10k/sdio.c
++++ b/drivers/net/wireless/ath/ath10k/sdio.c
+@@ -1862,6 +1862,7 @@ static int ath10k_sdio_hif_start(struct ath10k *ar)
+ 	struct ath10k_sdio *ar_sdio = ath10k_sdio_priv(ar);
+ 	int ret;
+ 
++	dev_set_threaded(&ar->napi_dev, true);
+ 	ath10k_core_napi_enable(ar);
+ 
+ 	/* Sleep 20 ms before HIF interrupts are disabled.
+diff --git a/drivers/net/wireless/ath/ath10k/snoc.c b/drivers/net/wireless/ath/ath10k/snoc.c
+index 9513ab696fff..e7d12dbb3fa5 100644
+--- a/drivers/net/wireless/ath/ath10k/snoc.c
++++ b/drivers/net/wireless/ath/ath10k/snoc.c
+@@ -926,7 +926,7 @@ static int ath10k_snoc_hif_start(struct ath10k *ar)
+ 	struct ath10k_snoc *ar_snoc = ath10k_snoc_priv(ar);
+ 
+ 	bitmap_clear(ar_snoc->pending_ce_irqs, 0, CE_COUNT_MAX);
+-
++	dev_set_threaded(&ar->napi_dev, true);
+ 	ath10k_core_napi_enable(ar);
+ 	ath10k_snoc_irq_enable(ar);
+ 	ath10k_snoc_rx_post(ar);
+
