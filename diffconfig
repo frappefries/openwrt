@@ -1,0 +1,26 @@
+CONFIG_TARGET_ipq806x=y
+CONFIG_TARGET_ipq806x_generic=y
+CONFIG_TARGET_ipq806x_generic_DEVICE_netgear_r7800=y
+
+# Use standard ath10k (driver + firmware)
+CONFIG_PACKAGE_kmod-ath10k=y
+CONFIG_PACKAGE_kmod-ath10k-ct=m
+CONFIG_PACKAGE_ath10k-firmware-qca9984=y
+CONFIG_PACKAGE_ath10k-firmware-qca9984-ct=m
+
+CONFIG_ATH10K_LEDS=y
+
+# SQM / CAKE latency control
+CONFIG_PACKAGE_kmod-sched-cake=y
+CONFIG_PACKAGE_kmod-ifb=y
+CONFIG_PACKAGE_sqm-scripts=y
+CONFIG_PACKAGE_tc-tiny=y
+
+CONFIG_PACKAGE_tc-tiny=y
+CONFIG_PACKAGE_terminfo=y
+CONFIG_PACKAGE_ethtool=y
+CONFIG_PACKAGE_hostapd-utils=y
+CONFIG_PACKAGE_htop=y
+CONFIG_PACKAGE_luci-ssl-openssl=y
+CONFIG_PACKAGE_libustream-openssl=y
+CONFIG_OPENSSL_WITH_CHACHA_POLY1305=y
