@@ -1,0 +1,44 @@
+CONFIG_TARGET_ipq806x=y
+CONFIG_TARGET_ipq806x_generic=y
+CONFIG_TARGET_ipq806x_generic_DEVICE_netgear_r7800=y
+
+CONFIG_BUSYBOX_CUSTOM=y
+CONFIG_BUSYBOX_CONFIG_FEATURE_EDITING_SAVEHISTORY=y
+CONFIG_BUSYBOX_CONFIG_FEATURE_EDITING_SAVE_ON_EXIT=y
+
+# Regular ath10k in the image, CT built as installable packages
+CONFIG_PACKAGE_kmod-ath10k=y
+CONFIG_PACKAGE_ath10k-firmware-qca9984=y
+CONFIG_PACKAGE_kmod-ath10k-ct=m
+CONFIG_PACKAGE_ath10k-firmware-qca9984-ct=m
+CONFIG_ATH10K_THERMAL=y
+
+# SQM (pulls in cake, ifb and tc)
+CONFIG_PACKAGE_luci-app-sqm=y
+
+# OpenSSL only
+CONFIG_PACKAGE_luci-ssl-openssl=y
+CONFIG_PACKAGE_libustream-openssl=y
+# CONFIG_PACKAGE_libustream-mbedtls is not set
+CONFIG_PACKAGE_apk-openssl=y
+# CONFIG_PACKAGE_apk-mbedtls is not set
+CONFIG_PACKAGE_wpad-basic-openssl=y
+# CONFIG_PACKAGE_wpad-basic-mbedtls is not set
+CONFIG_OPENSSL_OPTIMIZE_SPEED=y
+
+# Tools
+CONFIG_PACKAGE_terminfo=y
+CONFIG_PACKAGE_ethtool=y
+CONFIG_PACKAGE_hostapd-utils=y
+CONFIG_PACKAGE_htop=y
+
+# Build options
+CONFIG_DEVEL=y
+CONFIG_CCACHE=y
+# Optional, after a first working build:
+# CONFIG_USE_MOLD=y
+
+# LLVM toolchain is required
+# CONFIG_BPF_TOOLCHAIN_PREBUILT=y
+# CONFIG_PACKAGE_qosify=y
+# CONFIG_PACKAGE_luci-app-qosify=y
